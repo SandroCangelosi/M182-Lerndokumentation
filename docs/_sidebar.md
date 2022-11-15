@@ -1,1 +1,1 @@
-* [Woche 1 - Geschichte DB](Woche1/geschichtedb.md)
+* [Woche 1 - Vorbereitung](Woche1/vorbereitung.md)
