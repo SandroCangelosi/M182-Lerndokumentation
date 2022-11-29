@@ -20,7 +20,14 @@ Diese Dienste habe ich über die Einstellungen gefunden:
 * Winrar  
 * Wireshark  
 
-In dem Vagrantfile stehen diese SKripte:  
+In den Serverrollen sind folgende Dienste:  
+* AD AS  
+* DNS  
+* FS  
+* IIS  
+* WSUS  
+
+In dem Vagrantfile stehen diese Skripte:  
 * scripts/install-utilities.ps1  
 * scripts/install-redteam.ps1  
 * scripts/install-choco-extras.ps1  
@@ -30,19 +37,34 @@ In dem Vagrantfile stehen diese SKripte:
 * scripts/install-autorunstowineventlog.ps1  
 
 ## Zugriffe auf die Applikationen ("Wie greife ich auf die verschiedenen Softwaren zu?")
-Als standardbenutzer.  
+Über die IP und Port der Applikation von dem Server.  
+Auf den IIS kann man mittel "localhost" zugreifen.  
 
 ## Beschreibung der ELK-VM
 ### Login
 Mit dem Benutzernamen "Vagrant" und dem Passwort "vagrant" kann man sich auf die Ubuntu VM einloggen.  
 
 ### Installierte Software ("Welche Software wurde auf der VM installiert?")
+Diese Dienste habe ich über die Einstellungen gefunden:  
+* Google Chrome  
+* Microsoft Advanced Threat Analytics Gateway  
+* Microsoft Visual C++ 2013 Redistributable (x64)  
+* Microsoft Visual C++ 2015-2022 Redistributable (x64)  
+* Microsoft Visual C++ 2015-2022 Redistributable (x86)  
+* Notepad++  
+* Oracle VM VirtualBox Guest Additions  
+* Velociraptor  
+* Winrar  
+* Wireshark  
+
+In den Serverrollen konnte ich keine Installerte Software feststellen. Es erschien ein Fehler.  
+
 Die beiden Skripte werden aus dem Vagrantfile ausgeführt:  
 * bootstrap.sh  
 * ELK.sh  
 
 ### Zugriffe auf die Applikationen ("Wie greife ich auf die verschiedenen Softwaren zu?")
-Als standardbenutzer.  
+Über die IP und Port der Applikation von dem Server.
 
 # Infrastruktur-Setup
 ## Sinn und Zweck des Vagrantfile  
