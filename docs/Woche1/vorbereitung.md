@@ -5,10 +5,10 @@ Hier habe ich einen Netzwerkplan für die 4 VMs erstellt:
 
 ## Beschreibung der beiden Windows-VMs
 ### Login
-Mit dem Benutzernamen "Vagrant" und dem Passwort "vagrant" kann man sich in die beiden Windows Server VMs einloggen.  
+Mit dem Benutzernamen "Vagrant" und dem Passwort "vagrant" kann man sich in die beiden Windows Server VMs "wef" und "dc" einloggen.  
 
 ### Installierte Dienste ("Welche Software wurde auf der VM installiert?")
-Diese Dienste habe ich über die Einstellungen gefunden:  
+Diese Dienste habe ich über die Windows Einstellungen gefunden:  
 * Google Chrome  
 * Microsoft Advanced Threat Analytics Gateway  
 * Microsoft Visual C++ 2013 Redistributable (x64)  
@@ -20,7 +20,7 @@ Diese Dienste habe ich über die Einstellungen gefunden:
 * Winrar  
 * Wireshark  
 
-In den Serverrollen sind folgende Dienste:  
+In den Serverrollen sind folgende Dienste zu finden:  
 * AD AS  
 * DNS  
 * FS  
@@ -36,9 +36,10 @@ In dem Vagrantfile stehen diese Skripte:
 * scripts/install-velociraptor.ps1  
 * scripts/install-autorunstowineventlog.ps1  
 
-## Zugriffe auf die Applikationen ("Wie greife ich auf die verschiedenen Softwaren zu?")
-Über die IP und Port der Applikation von dem Server.  
+### Zugriffe auf die Applikationen ("Wie greife ich auf die verschiedenen Softwaren zu?")
+Über die IP und Port der Applikation von dem Server kann ich auf die WebGUI zugreifen.  
 Auf den IIS kann man mittel "localhost" zugreifen.  
+Die verschiedenen Serverdienste kann ich direkt aus dem Server Manager öffnen.  
 
 ## Beschreibung der ELK-VM
 ### Login
@@ -68,10 +69,13 @@ Die beiden Skripte werden aus dem Vagrantfile ausgeführt:
 
 # Infrastruktur-Setup
 ## Sinn und Zweck des Vagrantfile  
-Ist für die Erstellung und das Verwalten von VMs.  
+Das Vagrantfile wird verwendet um VMs einzurichten und zu konfigurieren.  
+So kann im Vagrantfile z. B. das Betriebssystem, die Netzwerkeinstellungen, verschiedene Software, der Arbeitsspeicher und der Speicherplatz definiert werden.  
+Durch das Vagrantfile wird die Erstellunng von VMs automatisiert und vereinfacht.    
 
 ## Sinn und Zweck Provisioning-Befehle  
-Wird dür die Installation von Software und das Anwenden von Konfigurationen eingesetzt.  
+Provisioning-Befehle sind Befehle, die in das Vagrantfile aufgenommen werden und von Vagrant beim Starten der VM ausgeführt werden.  
+Die Provisioning-Befehle werden für die Installation von Software und das Anwenden von Konfigurationen eingesetzt.  
 
 ## Liste aller Scripts für die Windows-Images die bei einer Installation ausgeführt werden  
 Hier habe ich das Skript von der Windows 10 VM aus dem Vagrantfile genommen:  
@@ -107,8 +111,26 @@ cfg.vm.provision "shell", inline: 'cscript c:\windows\system32\slmgr.vbs /rearm'
 
 
 ## Beschreibung des bootstrap.sh-Files für das Aufsetzen der Logger-VM  
-Es installiert und konfiguriert die Applikation.
+Es werden verschiedene Softwaren installiert und konfiguriert.  
+Die Konfigration wird entweder mittels eigenen Befehlen konfiguriert oder direkt von z. B. Github heruntergeladen.  
+
+So sieht das `main()` aus. Die einzelnen Funktionen werden nacheinander ausgeführt:  
+```vagrantfile
+main() {
+  apt_install_prerequisites
+  modify_motd
+  test_prerequisites
+  #fix_eth1_static_ip
+  download_palantir_osquery_config
+  install_fleet_import_osquery_config
+  install_velociraptor
+  install_suricata
+  install_zeek
+  install_guacamole
+  postinstall_tasks
+}
+```
 
 ## Beschreibung des ELK.sh-Files für das Aufsetzen der Logger-VM  
-Es installiert und konfiguriert die Applikation.
-
+Das Skript installiert und konfiguriert Elasticsearch, Kibana, Filebeat und Auditbeat.
+Bei diesem Skript gibt es keine Funktionen, alle einzelnen Befehle werden nacheinander ausgeführt.  

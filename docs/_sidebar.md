@@ -1,2 +1,7 @@
 * [Woche 1 - Vorbereitung](Woche1/vorbereitung.md)
-* [Woche 2 - WSUS Installation](Woche2/wsus.md)
+* [Woche 2 / 3 - WSUS Installation](Woche2/wsus.md)
+* [Woche 4 - Sysmon](Woche4/sysmon.md)
+* [Woche 5 - OSQuery](Woche5/osquery.md)    
+* [Woche 4 - Winlogbeat](Woche6/winlogbeat.md)
+* [Woche 6 - ELK](Woche6/elk.md)
+* [Woche 7 - OSQuery Fleet](Woche7/osqueryfleet.md) 
