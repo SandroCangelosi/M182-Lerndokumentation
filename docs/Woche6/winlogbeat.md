@@ -32,8 +32,27 @@ Für das Testen der Konfigdatei habe ich diesen Befehl ausgeführt:
 Nach dem erfolgreichem Ausführen von dem oberen Befehl konnte ich das Setup ausführen und den Dienst starten:  
 ![Setup](setup2.png)  
 
+Dazu habe ich eine Rolle mit einem Benutzer erstellt.  
+Wie es in der Anleitung beschrieben wurde:  
+![User](user.png)  
+![Role](role.png)  
+
 Auf der Kibana Weboberfläche konnte ich nach einigen Sekunden den Client sehen (win10):  
 ![Kibana Weboberfläche](kibanagui.png)  
 
 ## Dokumentation / Testing - Winlogbeat 0-4P:
 ### Dokumentieren Sie den Erfolg von Ihrer Installation ("sehen Sie Events von Ihrem Windows Rechner auf ELK"), mit Printscreens
+Wie ich oben beschrieben habe, konnte ich den Namen der VM in der GUI sehen.  
+Dazu habe ich noch einige mehr Tests hier gemacht.  
+
+**Zum einen habe ich hier das installierte Windows Build herausgelesen.**  
+Hier aus dem Tool:  
+![Build aus Winlogbeat](build_1.png)  
+Und hier aus der VM:  
+![Build aus der VM](build_2.png)  
+
+**Oder hier werden die zwei MAC-Adressen der VM aufgelistet.**  
+Aus dem Tool:   
+![MAC-Adresse aus Winlogbeat](mac_1.png)  
+Und hier aus der VM:  
+![MAC-Adresse aus der VM](mac_2.png)  
